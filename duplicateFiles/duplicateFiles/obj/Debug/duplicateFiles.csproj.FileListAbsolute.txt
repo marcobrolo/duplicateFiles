@@ -1,0 +1,6 @@
+c:\users\mark.lui\documents\visual studio 2013\Projects\duplicateFiles\duplicateFiles\bin\Debug\duplicateFiles.exe.config
+c:\users\mark.lui\documents\visual studio 2013\Projects\duplicateFiles\duplicateFiles\bin\Debug\duplicateFiles.exe
+c:\users\mark.lui\documents\visual studio 2013\Projects\duplicateFiles\duplicateFiles\bin\Debug\duplicateFiles.pdb
+c:\users\mark.lui\documents\visual studio 2013\Projects\duplicateFiles\duplicateFiles\obj\Debug\duplicateFiles.csprojResolveAssemblyReference.cache
+c:\users\mark.lui\documents\visual studio 2013\Projects\duplicateFiles\duplicateFiles\obj\Debug\duplicateFiles.exe
+c:\users\mark.lui\documents\visual studio 2013\Projects\duplicateFiles\duplicateFiles\obj\Debug\duplicateFiles.pdb
