@@ -15,6 +15,8 @@ namespace duplicateFiles
     class Program
     {
         public static Dictionary<string, string> fileDict = new Dictionary<string,string>();
+        // STORE DUPLICATES IN STRINGBUILDER FOR QUICKER STREAMING OUT CONTENTS TO FILE
+        public static StringBuilder dupOutputList = new StringBuilder();
 
         static void Main(string[] args)
         {
@@ -24,12 +26,13 @@ namespace duplicateFiles
             {
                 Console.WriteLine("Drive {0}, {1}", drive.Name, drive.IsReady);
 
-                if (drive.IsReady == true)
+                if (drive.IsReady == true && drive.Name =="C:\\")
                 {
                     processDirectories( drive.Name);
                 }
             }
 
+            writeDupsToFile();
             Console.ReadLine();
         }
 
@@ -65,11 +68,22 @@ namespace duplicateFiles
 
             if(fileDict.ContainsKey(fileName) == true)
             {
-                Console.WriteLine("{0},\n{1},\n{2}\n", fileName, fileDict[fileName], targetFile);
+               // Console.WriteLine("{0},\n{1},\n{2}\n", fileName, fileDict[fileName], targetFile);
+                dupOutputList.Append(fileName + Environment.NewLine + fileDict[fileName] + Environment.NewLine + targetFile + Environment.NewLine + Environment.NewLine);
             }
             else
             {
                 fileDict.Add(fileName, targetFile);
+            }
+        }
+
+        // OUTPUT DUPLICATES INTO A TEXT FILE FOR LATER VIEWING
+        public static void writeDupsToFile()
+        {
+            string outputFilePath = "duplicateOutput.txt";
+            if(dupOutputList.Length != 0)
+            {
+                File.WriteAllText(outputFilePath, dupOutputList.ToString());
             }
         }
     }
