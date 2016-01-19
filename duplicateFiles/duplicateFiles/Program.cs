@@ -26,7 +26,7 @@ namespace duplicateFiles
             {
                 Console.WriteLine("Drive {0}, {1}", drive.Name, drive.IsReady);
 
-                if (drive.IsReady == true && drive.Name =="C:\\")
+                if (drive.IsReady == true && drive.Name =="D:\\")
                 {
                     processDirectories( drive.Name);
                 }
@@ -43,7 +43,7 @@ namespace duplicateFiles
             
             foreach (string fileName in files)
             {
-                //Console.WriteLine("File{0}", fileName);
+                Console.WriteLine("File{0}", fileName);
                 processFile(fileName);
             }
 
@@ -64,7 +64,7 @@ namespace duplicateFiles
         public static void processFile(string targetFile)
         {
             string fileName = Path.GetFileNameWithoutExtension(targetFile);
-           // Console.WriteLine("File: {0}", fileName);
+            //Console.WriteLine("File: {0}", fileName);
 
             if(fileDict.ContainsKey(fileName) == true)
             {

@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "duplicateFiles", "duplicateFiles\duplicateFiles.csproj", "{314C52CB-E6DB-4865-8A54-F03652840E92}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "duplicateFilesApp", "duplicateFilesApp\duplicateFilesApp.csproj", "{9DE8FE49-B971-42E8-8426-2839DF41ED38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{314C52CB-E6DB-4865-8A54-F03652840E92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{314C52CB-E6DB-4865-8A54-F03652840E92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{314C52CB-E6DB-4865-8A54-F03652840E92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DE8FE49-B971-42E8-8426-2839DF41ED38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DE8FE49-B971-42E8-8426-2839DF41ED38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DE8FE49-B971-42E8-8426-2839DF41ED38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DE8FE49-B971-42E8-8426-2839DF41ED38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

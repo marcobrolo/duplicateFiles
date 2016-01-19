@@ -1,0 +1,13 @@
+C:\Users\mark.lui\Desktop\duplicateFiles\duplicateFiles\duplicateFilesApp\bin\Debug\duplicateFilesApp.exe.config
+C:\Users\mark.lui\Desktop\duplicateFiles\duplicateFiles\duplicateFilesApp\bin\Debug\duplicateFilesApp.exe
+C:\Users\mark.lui\Desktop\duplicateFiles\duplicateFiles\duplicateFilesApp\bin\Debug\duplicateFilesApp.pdb
+C:\Users\mark.lui\Desktop\duplicateFiles\duplicateFiles\duplicateFilesApp\obj\Debug\duplicateFilesApp.csprojResolveAssemblyReference.cache
+C:\Users\mark.lui\Desktop\duplicateFiles\duplicateFiles\duplicateFilesApp\obj\Debug\MainWindow.baml
+C:\Users\mark.lui\Desktop\duplicateFiles\duplicateFiles\duplicateFilesApp\obj\Debug\MainWindow.g.cs
+C:\Users\mark.lui\Desktop\duplicateFiles\duplicateFiles\duplicateFilesApp\obj\Debug\App.g.cs
+C:\Users\mark.lui\Desktop\duplicateFiles\duplicateFiles\duplicateFilesApp\obj\Debug\duplicateFilesApp_MarkupCompile.cache
+C:\Users\mark.lui\Desktop\duplicateFiles\duplicateFiles\duplicateFilesApp\obj\Debug\duplicateFilesApp.g.resources
+C:\Users\mark.lui\Desktop\duplicateFiles\duplicateFiles\duplicateFilesApp\obj\Debug\duplicateFilesApp.Properties.Resources.resources
+C:\Users\mark.lui\Desktop\duplicateFiles\duplicateFiles\duplicateFilesApp\obj\Debug\duplicateFilesApp.csproj.GenerateResource.Cache
+C:\Users\mark.lui\Desktop\duplicateFiles\duplicateFiles\duplicateFilesApp\obj\Debug\duplicateFilesApp.exe
+C:\Users\mark.lui\Desktop\duplicateFiles\duplicateFiles\duplicateFilesApp\obj\Debug\duplicateFilesApp.pdb
