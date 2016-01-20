@@ -9,10 +9,11 @@ namespace duplicateFilesApp
 {
     class DupFilesWrapper
     {
-        public static Dictionary<string, FileInfo> fileList = new Dictionary<string, FileInfo>();
+        
         // STORE DUPLICATES IN STRINGBUILDER FOR QUICKER STREAMING OUT CONTENTS TO FILE
         public static StringBuilder dupOutputList = new StringBuilder();
         private static Dictionary<string, List<FileInfo>> dupFileDict = new Dictionary<string,List<FileInfo>>();
+        private static Dictionary<string, Dictionary<string, FileInfo>> fileListByExtension = new Dictionary<string, Dictionary<string, FileInfo>>();
 
         public void duplicateFilesApp()
         {
@@ -23,7 +24,7 @@ namespace duplicateFilesApp
         private static void processDirectories(string targetDirectory)
         {
             DirectoryInfo dirInfo = new DirectoryInfo(targetDirectory);
-            FileInfo[] fileInfoArr = dirInfo.GetFiles("*.jpg");
+            FileInfo[] fileInfoArr = dirInfo.GetFiles("*");
 
             //string[] files = System.IO.Directory.GetFiles(targetDirectory, "*.jpg");
 
@@ -53,6 +54,40 @@ namespace duplicateFilesApp
             string fileNameHash = targetFile.Name + "_." + targetFile.Length;
             // Console.WriteLine("File: {0}", fileName);
 
+            // WE WANT TO GROUP FILES BY THEIR EXTENSIONS, THAT WAY WHEN SEARCHING FOR DUPLICATES
+            // WE ONLY CONSIDER FILES WITH THE SAME EXTENSIONS, MAKING IT MORE EFFICIENT IN THE SEARCH
+            if( fileListByExtension.ContainsKey(targetFile.Extension) == true)
+            {
+                // CHECK THE DUPLiCATE FILE LIST FIRST FOR DUPLICATES, SINCE EXISTING DUPLICATES
+                // HAVE A HIGHER CHANCE OF REOCCURING DUPLICATES (AND THIS IS A SHORTER LIST TO SEARCH
+                // THUS IMPROVING SEARCH TIME
+                if(dupFileDict.ContainsKey(fileNameHash) == true)
+                {
+                    dupFileDict[fileNameHash].Add(targetFile);
+                }
+                else
+                {
+                    if(fileListByExtension[targetFile.Extension].ContainsKey(fileNameHash) == true)
+                    {
+                        dupFileDict.Add(fileNameHash, new List<FileInfo>() { targetFile });
+                        dupFileDict[fileNameHash].Add(fileListByExtension[targetFile.Extension][fileNameHash]);
+                        // REMOVE FILE FROM THE FILE LIST SINCE NOW AN ENTRY LIVEs IN DUPFILEDICT AND BE
+                        // CHECKED THERE
+                        fileListByExtension[targetFile.Extension].Remove(fileNameHash);
+                    }
+                    else
+                    {
+                        fileListByExtension[targetFile.Extension].Add(fileNameHash, targetFile);
+                    }
+                }
+            }
+            else
+            {
+                Dictionary<string, FileInfo> fileList = new Dictionary<string, FileInfo>();
+                fileList.Add(fileNameHash, targetFile);
+                fileListByExtension.Add(targetFile.Extension, fileList);
+            }
+            /*
             if (fileList.ContainsKey(fileNameHash) == true)
             {
                 // Console.WriteLine("{0},\n{1},\n{2}\n", fileName, fileDict[fileName], targetFile);
@@ -70,7 +105,7 @@ namespace duplicateFilesApp
             else
             {
                 fileList.Add(fileNameHash, targetFile);
-            }
+            }*/
         }
 
         // OUTPUT DUPLICATES INTO A TEXT FILE FOR LATER VIEWING
