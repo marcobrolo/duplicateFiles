@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using duplicateFilesApp;
 using System.IO;
+using System.Windows.Forms;
 
 
 namespace duplicateFilesApp
@@ -25,6 +26,7 @@ namespace duplicateFilesApp
     {
         private DupFilesWrapper dupFilesObj = new DupFilesWrapper();
         private Dictionary<string, List<FileInfo>> duplicateFiles;
+        private string directoryPath = "D:\\";
 
         public MainWindow()
         {
@@ -50,6 +52,13 @@ namespace duplicateFilesApp
         {
             var dialog = new System.Windows.Forms.FolderBrowserDialog();
             System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                Console.WriteLine(dialog.SelectedPath);
+                directoryPath = dialog.SelectedPath.Replace(@"\", @"\\");
+            }
+            
         }
 
         private void btnFindDup(object sender, RoutedEventArgs e)
@@ -59,7 +68,7 @@ namespace duplicateFilesApp
 
         private void populateDupFiles()
         {
-            duplicateFiles = dupFilesObj.getDuplicateFiles();
+            duplicateFiles = dupFilesObj.getDuplicateFiles(directoryPath);
 
             foreach (var dupFile in duplicateFiles.Keys)
             {

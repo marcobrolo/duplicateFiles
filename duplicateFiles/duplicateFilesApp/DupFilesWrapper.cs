@@ -109,9 +109,9 @@ namespace duplicateFilesApp
         }
 
         // OUTPUT DUPLICATES INTO A TEXT FILE FOR LATER VIEWING
-        public Dictionary<string,List<FileInfo>> getDuplicateFiles ()
+        public Dictionary<string,List<FileInfo>> getDuplicateFiles (string path)
         {
-            processDirectories("D:\\");
+            processDirectories(path);
             return dupFileDict; 
         }
 
