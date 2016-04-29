@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using duplicateFilesApp;
 using System.IO;
 using System.Windows.Forms;
+using System.Drawing;
 
 
 namespace duplicateFilesApp
@@ -33,6 +34,8 @@ namespace duplicateFilesApp
             InitializeComponent();
         }
 
+        // CLICK EVEN FOR THE DUPLICATE FILE LISTBOX, CLICKING EVEN WILL SHOW THE USER
+        // ALL THE PATHS TO THE DUPLICATE FILE
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             listBox_DupFilesInfo.Items.Clear();
@@ -42,12 +45,26 @@ namespace duplicateFilesApp
                 List<FileInfo> dupFileInfoList = duplicateFiles[selectedFile];
                 foreach(var dupFileInfo in dupFileInfoList)
                 {
+                    //listBox_DupFilesInfo.Items.Add(GetCompactedString(dupFileInfo.FullName,32));
                     listBox_DupFilesInfo.Items.Add(dupFileInfo.FullName);
                 }
             }
 
         }
 
+        // DOUBLE CLICK EVENT FOR THE LIST BOX DISPLAYING ALL THE PATHS TO A SELECTED DUPLICATE FILE
+        // DOUBLE CLICKING THIS WOULD OPEN UP EXPLORER TO THE DIRECTORY OF THE SELECTED PATH
+        private void dupFileListBoxDblClick(Object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Console.WriteLine("click");
+            string selectedFilePath = listBox_DupFilesInfo.SelectedValue.ToString();
+
+
+            System.Diagnostics.Process.Start(System.IO.Path.GetDirectoryName(selectedFilePath));
+
+        }
+
+        // FUNCTION TO ALLOW USERS TO SELECT THE DIRECTORY TO RUN THE PROGRAM IN
         private void btnBrowseDir(object sender, RoutedEventArgs e)
         {
             var dialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -61,6 +78,7 @@ namespace duplicateFilesApp
             
         }
 
+        // FUNCTION TO INITIATE THE DUPLICATE FILE SEARCH
         private void btnFindDup(object sender, RoutedEventArgs e)
         {
             populateDupFiles();
@@ -74,8 +92,25 @@ namespace duplicateFilesApp
             {
                 listBox_DupFiles.Items.Add(dupFile);
             }
-            
-            
+        }
+
+        // COMPACT STRING FUNCTION FOUND FROM 
+        // http://stackoverflow.com/questions/1764204/how-to-display-abbreviated-path-names-in-net
+        // USED TO SHORTEN THE DIPLAYING OF THE STRING, HOWEVER MIGHT NOT BE USED SINCE WE WANT TO 
+        // USE FULL PATH FOR THE DOUBLE CLICK EVEN
+        private static string GetCompactedString(
+        string stringToCompact, int maxWidth)
+        {
+            // Copy the string passed in since this string will be
+            // modified in the TextRenderer's MeasureText method
+            Font font = new Font("Arial", 14, System.Drawing.FontStyle.Regular);
+
+            string compactedString = string.Copy(stringToCompact);
+            var maxSize = new System.Drawing.Size(maxWidth, 0);
+            var formattingOptions = TextFormatFlags.PathEllipsis
+                                  | TextFormatFlags.ModifyString;
+            TextRenderer.MeasureText(compactedString, font, maxSize, formattingOptions);
+            return compactedString;
         }
     }
 }
